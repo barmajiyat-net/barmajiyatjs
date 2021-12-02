@@ -38,3 +38,9 @@ function getURLParam(paramName, url) {
 function getParamFromCurrentURL(paramName) {
   return getURLParam(paramName, location.href);
 }
+
+function isValidEmail(email) {
+  email = email.trim();
+  var regex = /\w*\.*\w*-*\w*\.*@\w*\.*\w*-*\w*\.*\.\w*/;//\S+@\S+\.\S+/;
+  return regex.test(email);
+}
