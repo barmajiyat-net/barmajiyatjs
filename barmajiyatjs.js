@@ -44,3 +44,25 @@ function isValidEmail(email) {
   var regex = /\w*\.*\w*-*\w*\.*@\w*\.*\w*-*\w*\.*\.\w*/;//\S+@\S+\.\S+/;
   return regex.test(email);
 }
+
+function isUnsignedInt(number) {
+  var result = false;
+  if ($.isNumeric(number) && Math.floor(number) == number && number > 0) {
+    result = true;
+  }
+  return result;
+}
+
+function formatToCurrency(n, x) {
+  if ($.isNumeric(n)) {
+    n = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\.' : '$') + ')';
+    n = this.toFixed(Math.max(0, ~~n)).replace(new RegExp(n, 'g'), '$&,');
+  }
+
+  return n;
+}
+
+function emptyDataTable(id) {
+  var table = $('#' + id).DataTable();
+  table.clear().draw();
+}
